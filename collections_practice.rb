@@ -111,11 +111,10 @@ def organize_songs_by_artist(array)
   new_array = []
   array.each do |song1|
     new_array << song1.split(" - ")
-
-    new_array.each do |song2|
+  end
+  new_array.each do |song2|
       new_hash[song2[0]] = []
       new_hash[song2[0]] << song2[1]
-    end
   end
   new_hash
 end
