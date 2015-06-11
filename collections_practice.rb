@@ -1,4 +1,4 @@
-# QUESTION 1: #SORT_ARRAY_ASC
+require 'pry'
 
 # build a method that sorts an array in ascending order
 def sort_array_asc(array)
@@ -108,16 +108,21 @@ end
 
 def organize_songs_by_artist(array)
   new_hash = {}
-  new_array = []
-  array.each do |song1|
-    new_array << song1.split(" - ")
+
+  array.map {|entry| entry.split(" - ")}.each do |artist, song|
+    if new_hash[artist] == nil 
+      new_hash[artist] = [song] 
+    else
+      new_hash[artist] << song
+    end
   end
-  new_array.each do |song2|
-      new_hash[song2[0]] = []
-      new_hash[song2[0]] << song2[1]
-  end
+
   new_hash
 end
+
+
+# split entries into artist and song by '-', then convert that into a hash
+# allows for duplicate values
 
 =begin
   new_hash = {} # initializes an empty hash
@@ -128,7 +133,7 @@ end
 =end
 
 =begin
-["dave matthews band - tripping billies", 
+array = ["dave matthews band - tripping billies", 
                 "dave matthews band - #41", 
                 "calvin harris - some techno song", 
                 "avicii - some other dance song", 
